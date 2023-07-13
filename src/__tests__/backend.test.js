@@ -21,6 +21,7 @@ describe('Server Test', function () {
 describe('GET /random-picture', function () {
 
     it('should respond with a 200 status code and a picture', function (done) {
+        // test comment
         chai.request(app)
             .get('/random-picture')
             .end(function (err, res) {
