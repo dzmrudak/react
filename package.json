@@ -18,7 +18,7 @@
     "start-back": "node server.js",
     "start-front": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --coverage",
+    "test": "mocha src/__tests__/backend.test.js --coverage",
     "eject": "react-scripts eject",
     "wdio": "wdio run ./wdio.conf.js",
     "playwright:test": "npx playwright test playwright"
