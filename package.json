@@ -42,11 +42,6 @@
       "last 1 microsoftedge version"
     ]
   },
-  "jest": {
-    "testPathIgnorePatterns": [
-      "/__tests__/"
-    ]
-  },
   "devDependencies": {
     "@babel/preset-env": "^7.22.2",
     "@babel/preset-react": "^7.22.3",
