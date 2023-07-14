@@ -122,7 +122,7 @@ exports.config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: [['selenium-standalone', {drivers: {chrome: '114.0.5735.198', firefox: '115.0.2', microsoftedge: '114.0.1823.82'}}]],
+    services: [['selenium-standalone', {drivers: {chrome: '114.0.5736.198'}}]],
 
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
