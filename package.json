@@ -18,15 +18,14 @@
     "start-back": "node server.js",
     "start-front": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --coverage",
+    "test": "react-scripts test --coverage --detectOpenHandles",
     "eject": "react-scripts eject",
     "wdio": "wdio run ./wdio.conf.js",
     "playwright:test": "npx playwright test playwright"
   },
   "eslintConfig": {
     "extends": [
-      "react-app",
-      "react-app/jest"
+      "react-app"
     ]
   },
   "browserslist": {
@@ -59,6 +58,7 @@
     "chai": "^4.3.7",
     "chai-http": "^4.3.0",
     "fs": "^0.0.1-security",
+    "jest": "^27.5.1",
     "mocha": "^10.2.0",
     "path": "^0.12.7",
     "playwright": "^1.35.0",

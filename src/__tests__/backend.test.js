@@ -3,9 +3,13 @@ const expect = chai.expect;
 const chaiHttp = require("chai-http");
 const path = require('path');
 const fs = require('fs');
-const app = require('../../server');
+const {app, server} = require('../../server');
 
 chai.use(chaiHttp);
+
+afterAll(() => {
+    server.close();
+  });
 
 describe('Server Test', function () {
     it('server is live', function (done) {

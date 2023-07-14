@@ -70,8 +70,8 @@ app.post('/picture', upload.none(), (req, res) => {
     });
 });
 
-app.listen(8080, () => {
+const server = app.listen(8080, () => {
     console.log('Server listening on port 8080');
 });
 
-module.exports = app;
+module.exports = {app, server};
