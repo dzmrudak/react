@@ -28,5 +28,9 @@ jobs:
         cache: 'npm'
     - run: npm install
     - run: CI=true npm run test
+    - name: Start Server
+      run: npm start 
     - name: Run WebDriverIO tests
       run: npx wdio run ./wdio.conf.js
+    - name: Stop Server
+      run: npm stop
