@@ -18,6 +18,4 @@ BeforeAll(async () => {
 
 Given(/^A web browser is at the "(Main)" page$/, page => {
     goToUrl(page);
-    console.log(document.documentElement.outerHTML);
-
 });
