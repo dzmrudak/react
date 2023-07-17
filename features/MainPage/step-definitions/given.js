@@ -16,6 +16,8 @@ BeforeAll(async () => {
   
 
 
-Given(/^A web browser is at the "(Main)" page$/, page => {
+Given(/^A web browser is at the "(Main)" page$/, async page => {
     goToUrl(page);
+    const elements = await $$('*'); // Fetch all elements on the page
+    console.log('All Elements on the Page:', elements.length);
 });
