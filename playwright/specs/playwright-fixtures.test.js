@@ -15,6 +15,7 @@ myTest('Should be able to search a picture', async ({ mainPage }) => {
 
     await mainPage.enterPictureName(picName);
     await mainPage.clickSubmitButton();
+    await new Promise((resolve) => setTimeout(resolve, 100));
     expect(await mainPage.getSearchedPictureAttrText(attrText)).toBe(picName);
 });
 
@@ -30,6 +31,7 @@ myTest('Should show an error message if the picture is not found', async ({ main
     const picName = 'cat';
     await mainPage.enterPictureName(picName);
     await mainPage.clickSubmitButton();
+    await new Promise((resolve) => setTimeout(resolve, 100));
     expect(await mainPage.getErrorMessageText()).toBe('Error: Not Found');
 });
 

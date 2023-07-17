@@ -44,6 +44,7 @@ class MainPage extends BasePage {
     }
 
     async getArrayOfPicturesFromGrid() {
+        await new Promise((resolve) => setTimeout(resolve, 100));
         let picArray = await this.page.$$(this.singlePictureInGrid);
         return picArray.length;
     }
