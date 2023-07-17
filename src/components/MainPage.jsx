@@ -91,7 +91,7 @@ const MainPage = () => {
                         key={index}
                         className="picture"
                         src={picture}
-                        alt={`${index + 1}`}
+                        alt={`GridPic ${index + 1}`}
                     />
                 ))}
             </div>

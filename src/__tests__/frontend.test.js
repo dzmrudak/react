@@ -86,7 +86,7 @@ describe('MainPage elements', () => {
 
         await waitFor(() => {
             const pictureElements = screen.queryAllByAltText((_, element) =>
-                element.alt.startsWith('Picture')
+                element.alt.startsWith('GridPic')
             );
             expect(pictureElements).toHaveLength(9);
         });
