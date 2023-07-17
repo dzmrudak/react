@@ -5,6 +5,7 @@ import assertPIcturesInGrid from '../support/assertions/assertPIcturesInGrid';
 import assertPictureGridHidden from '../support/assertions/assertPictureGridHidden';
 import assertSubmitButtonIsDisabled from '../support/assertions/assertSubmitButtonIsDisabled';
 
+
 Then(/^The searchable picture "(.*)" is( not)* displayed on the screen$/, async (searchedPicture, falseCase) => {
     await assertSearch(searchedPicture, falseCase);
 });
