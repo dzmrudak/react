@@ -32,4 +32,3 @@ Feature: My First JS App
       | " "           |
       | "  "          |
       | "\u00A0"      |
-
