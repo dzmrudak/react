@@ -21,4 +21,7 @@ Given(/^A web browser is at the "(Main)" page$/, async page => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
     const elements = await $$('*'); // Fetch all elements on the page
     console.log('All Elements on the Page:', elements.length);
+    // Log information about each element
+    const pageSource = await browser.getPageSource();
+    console.log('Page Source:', pageSource);
 });
