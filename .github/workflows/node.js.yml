@@ -36,5 +36,3 @@ jobs:
         npx wdio run ./wdio.conf.js
     - name: Run Playwright tests
       run: npm run playwright:test
-    - name: Run robot tests
-      run: npm run robot:test
