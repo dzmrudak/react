@@ -34,3 +34,5 @@ jobs:
       run: |
         echo "Running WebDriverIO tests"
         npx wdio run ./wdio.conf.js
+    - name: Run Playwright tests
+      run: npm run playwright:test
