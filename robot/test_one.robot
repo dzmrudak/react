@@ -2,7 +2,11 @@
 Documentation       Robot Framework tests for the Random Pictures Grid App
 
 Library             SeleniumLibrary
+Library             Process
+Library             OperatingSystem
 
+Suite Setup         Start Server
+Suite Teardown      Terminate All Processes    kill=True
 Test Setup          Open main page of the app
 Test Teardown       Closing Browser
 
@@ -11,8 +15,9 @@ Test Teardown       Closing Browser
 ${BROWSER}          chrome
 ${URL}              http://localhost:8080
 ${Picture Name}     1.png
-${Alt Attribute}    alt    
+${Alt Attribute}    alt
 ${Error Message}    Error: Not Found
+${SERVER_PATH}      ${EXECDIR}${/}server.js
 
 
 *** Test Cases ***
@@ -27,6 +32,7 @@ Should contain 9 pictures in the picture grid
 Should show an error message if the picture is not found
     Enter Picture Name    cat
     Click Submit Button
+    Wait Until Page Contains    ${Error Message}    timeout=1000ms
     ${errorMessageText}=    Get Error Message Text
     Should Be Equal    ${errorMessageText}    ${Error Message}
 
@@ -49,6 +55,10 @@ Should be able to search a picture
 
 
 *** Keywords ***
+Start Server
+    Log    ${SERVER_PATH}    console=True
+    Start Process    node    ${SERVER_PATH}
+
 Open main page of the app
     Open Browser    ${URL}    ${BROWSER}
     Maximize Browser Window
