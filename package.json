@@ -22,7 +22,7 @@
     "test": "react-scripts test --coverage --detectOpenHandles",
     "eject": "react-scripts eject",
     "wdio": "wdio run ./wdio.conf.js",
-    "playwright:test": "npx playwright test playwright",
+    "playwright:test": "npx playwright test playwright --shard=${{ matrix.shard }}/${{ strategy.job-total }}",
     "robot:test": "robot -d results robot/test_one.robot"
     },
   "eslintConfig": {
