@@ -3,8 +3,7 @@ import { defineConfig } from '@playwright/test';
 export default defineConfig({
   // Rest of your config...
   outputDir: 'playwright-report/',
-  reporter: "html",
-
+  reporter: [['list', { printSteps: true }]],
 
   // Run your local dev server before starting the tests
   webServer: {
