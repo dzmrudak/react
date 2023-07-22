@@ -42,21 +42,23 @@ jobs:
       run: |
         echo "Running WebDriverIO tests"
         npx wdio run ./wdio.conf.js
-  shard-playwright-tests:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Shard Playwright tests
-        run: |
-          # Calculate the number of tests per shard
-          total_shards=${{ github.event.inputs.total_number_of_shards }}
-          total_tests=$(npx playwright test --list | grep -c "\- ")
-          tests_per_shard=$((total_tests / total_shards + 1))
-          
-          # Calculate the range of tests to run for this shard
-          shard_number=${{ github.event.inputs.shard_number }}
-          start_test=$((tests_per_shard * (shard_number - 1) + 1))
-          end_test=$((tests_per_shard * shard_number))
-          test_range="${start_test}..${end_test}"
-          
-          # Run the Playwright tests using the test range
-          npx playwright test --repeat 1 --workers 1 --test-match "${test_range}"
+        - name: Install @playwright/test
+        run: npm install -D @playwright/test
+    - name: Shard Playwright tests
+      env:
+          PLAYWRIGHT_WORKERS: 1
+          PLAYWRIGHT_TEST_RANGE: ${{ env.TEST_RANGE }}
+      run: |
+        # Calculate the number of tests per shard
+        total_shards=${{ github.event.inputs.total_number_of_shards }}
+        total_tests=$(npx playwright test --list | grep -c "\- ")
+        tests_per_shard=$((total_tests / total_shards + 1))
+
+        # Calculate the range of tests to run for this shard
+        shard_number=${{ github.event.inputs.shard_number }}
+        start_test=$((tests_per_shard * (shard_number - 1) + 1))
+        end_test=$((tests_per_shard * shard_number))
+        test_range="${start_test}..${end_test}"
+
+        # Run the Playwright tests using the test range
+        npx playwright test --repeat 1 --workers 1 --test-match "${test_range}"
