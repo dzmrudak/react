@@ -42,8 +42,8 @@ jobs:
       run: |
         echo "Running WebDriverIO tests"
         npx wdio run ./wdio.conf.js
-        - name: Install @playwright/test
-        run: npm install -D @playwright/test
+    - name: Install @playwright/test
+      run: npm install -D @playwright/test
     - name: Shard Playwright tests
       env:
           PLAYWRIGHT_WORKERS: 1
