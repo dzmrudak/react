@@ -23,9 +23,8 @@
     "eject": "react-scripts eject",
     "wdio": "wdio run ./wdio.conf.js",
     "playwright:test": "npx playwright test playwright",
-    "robot:test": "robot -d results robot/test_one.robot",
-    "playwright:shard": "npx playwright test --workers $PLAYWRIGHT_WORKERS --test-match \"$PLAYWRIGHT_TEST_RANGE\""
-  },
+    "robot:test": "robot -d results robot/test_one.robot"
+    },
   "eslintConfig": {
     "extends": [
       "react-app"
