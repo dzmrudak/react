@@ -30,7 +30,8 @@ jobs:
           path: |
             ~/.cache/ms-playwright
           key: playwright-${{ hashFiles('package-lock.json') }}
-
+      - name: Build
+        run: npm build
       - name: Install dependencies
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: npm install
@@ -67,4 +68,4 @@ jobs:
           key: playwright-${{ hashFiles('package-lock.json') }}
 
       - name: Run Playwright tests
-        run: npm run playwright:test
+        run: npx playwright test playwright\specs\playwright-fixtures.test.js --shard=${{ matrix.shard }}/${{ strategy.job-total }}
