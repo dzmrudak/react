@@ -69,7 +69,6 @@ jobs:
 
       - name: Run Playwright tests
         run: npx playwright test playwright/specs/playwright-fixtures.test.js --shard=${{ matrix.shard }}/${{ strategy.job-total }}
-      
       - uses: actions/upload-artifact@v3
         if: always()
         with:
