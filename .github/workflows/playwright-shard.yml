@@ -35,6 +35,7 @@ jobs:
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: npm install
       - name: Build
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: npm run build
       - name: Install Playwright Browsers
         if: steps.cache-playwright.outputs.cache-hit != 'true'
