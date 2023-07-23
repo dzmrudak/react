@@ -4,7 +4,7 @@ import { devices } from "@playwright/test";
 export default defineConfig({
   // Rest of your config...
 
-  reporter: [['list', { outputFolder: 'playwright/specs/test-results' }]],
+  reporter: 'list',
 
   projects: [
     {
