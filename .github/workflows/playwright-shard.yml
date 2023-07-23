@@ -68,11 +68,11 @@ jobs:
           key: playwright-${{ hashFiles('package-lock.json') }}
 
       - name: Run Playwright tests
-        run: npx playwright test playwright/specs/playwright-fixtures.test.js --reporter=list --shard=${{ matrix.shard }}/${{ strategy.job-total }}
+        run: npx playwright test playwright/specs/playwright-fixtures.test.js --shard=${{ matrix.shard }}/${{ strategy.job-total }}
       
       - uses: actions/upload-artifact@v3
         if: always()
         with:
             name: playwright-report-${{ matrix.shard }}_${{ strategy.job-total }}
-            path: playwright/specs/test-results/
+            path: playwright/specs/test-results
             retention-days: 30
