@@ -34,12 +34,18 @@ jobs:
       - name: Install dependencies
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: npm install
-      - name: Build
-        if: steps.cache-node-modules.outputs.cache-hit != 'true'
-        run: npm run build
       - name: Install Playwright Browsers
         if: steps.cache-playwright.outputs.cache-hit != 'true'
         run: npx playwright install --with-deps
+
+  build:
+    name: 🏗️ Build
+    needs: install
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build
+      run: npm run build
 
   test:
     name: 🧪 Test (${{ matrix.shard }}/${{ strategy.job-total }})
