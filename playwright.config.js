@@ -3,7 +3,7 @@ import { defineConfig } from '@playwright/test';
 export default defineConfig({
   // Rest of your config...
   outputDir: 'test-results/',
-  reporter: [['list', { printSteps: true }]],
+  reporter: process.env.CI ? 'dot' : 'list',
 
   // Run your local dev server before starting the tests
   webServer: {
@@ -13,5 +13,5 @@ export default defineConfig({
   },
   use: {
     baseURL: 'http://localhost:8080',
-  },
+  }
 });
