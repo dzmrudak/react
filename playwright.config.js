@@ -2,8 +2,8 @@ import { defineConfig } from '@playwright/test';
 
 export default defineConfig({
   // Rest of your config...
-  outputDir: 'playwright-report/',
-  reporter: process.env.CI ? 'dot' : 'list',
+
+  reporter: [['html', { outputFolder: 'playwright/specs/test-results' }]],
 
   // Run your local dev server before starting the tests
   webServer: {

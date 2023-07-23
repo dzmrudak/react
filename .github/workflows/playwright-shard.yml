@@ -68,7 +68,7 @@ jobs:
           key: playwright-${{ hashFiles('package-lock.json') }}
 
       - name: Run Playwright tests
-        run: npx playwright test playwright\specs\playwright-fixtures.test.js --reporter=list --shard=${{ matrix.shard }}/${{ strategy.job-total }}
+        run: npx playwright test playwright/specs/playwright-fixtures.test.js --reporter=list --shard=${{ matrix.shard }}/${{ strategy.job-total }}
       
       - uses: actions/upload-artifact@v3
         if: always()
