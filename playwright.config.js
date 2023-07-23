@@ -1,9 +1,26 @@
 import { defineConfig } from '@playwright/test';
+import { devices } from "@playwright/test";
 
 export default defineConfig({
   // Rest of your config...
 
   reporter: [['html', { outputFolder: 'playwright/specs/test-results' }]],
+
+  projects: [
+    {
+      name: "chromium",
+      use: {
+        ...devices["Desktop Chrome"],
+      },
+    },
+
+    {
+      name: "firefox",
+      use: {
+        ...devices["Desktop Firefox"],
+      },
+    },
+  ],
 
   // Run your local dev server before starting the tests
   webServer: {
