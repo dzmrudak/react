@@ -22,7 +22,13 @@ jobs:
           path: |
             node_modules
           key: modules-${{ hashFiles('package-lock.json') }}
-
+      - name: Cache build
+        uses: actions/cache@v3
+        id: cache-build
+        with:
+            path: |
+              build
+            key: build-${{ hashFiles('package-lock.json') }}
       - name: Cache Playwright binaries
         uses: actions/cache@v3
         id: cache-playwright
@@ -34,29 +40,12 @@ jobs:
       - name: Install dependencies
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: npm install
+      - name: Build
+        if: steps.cache-build.outputs.cache-hit != 'true'
+        run: npm run build
       - name: Install Playwright Browsers
         if: steps.cache-playwright.outputs.cache-hit != 'true'
         run: npx playwright install --with-deps
-
-  build:
-    timeout-minutes: 60
-    name: 🏗️ Build
-    needs: install
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-node@v3
-    - name: Cache build
-      uses: actions/cache@v3
-      id: cache-build
-      with:
-        path: |
-          build
-        key: modules-${{ hashFiles('package-lock.json') }}
-    - name: Build the project
-      if: steps.cache-build.outputs.cache-hit != 'true'
-      run: npm run build
-
   test:
     name: 🧪 Test (${{ matrix.shard }}/${{ strategy.job-total }})
     needs: install
